@@ -26,9 +26,16 @@ sellItControllers.controller('DetailsController', ['$scope', '$http', '$routePar
 }]);
 
 sellItControllers.controller('LoginController', ['$scope', '$http', function($scope, $http) {
-  $http.get('/login').success(function(data) {
-    $scope.login = function(username, password) {
-      console.log(username);
-    };
-  });
+
+  $scope.user = {};
+  $scope.login = function() {
+    $http({
+      method: 'POST',
+      url: '/login',
+      data: $scope.user
+    }).then(function(result){
+      console.log('Hey i think ou added a user! %s', result.data.username);
+      $scope.user ={};
+    });
+  };
 }]);

@@ -49,6 +49,28 @@ app.get('/api/users', function(req, res) {
   });
 });
 
+//LOGIN
+app.post('/login', function(req, res) {
+  console.log(req.body);
+  var newUser = User({
+    username: req.body.username,
+    password: req.body.password,
+  });
+
+  newUser.save({
+    username: req.body.username,
+    password: req.body.password
+  }, function(err, saved) {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log('Added User! %s', saved);
+      res.send(saved);
+    }
+  });
+});
+
+
 //frontend routes =========================================================
 // route to handle all angular requests
 app.get('*', function(req, res) {
