@@ -16,7 +16,6 @@ sellItControllers.controller('DetailsController', ['$scope', '$http', '$routePar
     } else {
       $scope.prevItem = $scope.items.length - 1;
     }
-
     if ($routeParams.itemId < $scope.items.length - 1) {
       $scope.nextItem = Number($routeParams.itemId) + 1;
     } else {
@@ -25,17 +24,30 @@ sellItControllers.controller('DetailsController', ['$scope', '$http', '$routePar
   });
 }]);
 
-sellItControllers.controller('LoginController', ['$scope', '$http', function($scope, $http) {
+sellItControllers.controller('RegisterController', ['$scope', '$http', function($scope, $http) {
+  $scope.user = {};
+  $scope.register = function() {
+    $http({
+      method: 'POST',
+      url: '/register',
+      data: $scope.user
+    }).then(function(result) {
+      console.log('Hey i think ou added a user! %s', result.data.username);
+      $scope.user = {};
+    });
+  };
+}]);
 
+sellItControllers.controller('LoginController', ['$scope', '$http', function($scope, $http) {
   $scope.user = {};
   $scope.login = function() {
     $http({
       method: 'POST',
       url: '/login',
       data: $scope.user
-    }).then(function(result){
-      console.log('Hey i think ou added a user! %s', result.data.username);
-      $scope.user ={};
+    }).then(function(result) {
+      console.log('Hey Your logged in %s', result.data.username);
+      $scope.user = {};
     });
   };
 }]);

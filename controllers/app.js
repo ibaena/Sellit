@@ -13,6 +13,10 @@ SellIt.config(['$routeProvider', function($routeProvider) {
     templateUrl: '/views/partials/details.html',
     controller: 'DetailsController'
   }).
+  when('/register', {
+    templateUrl: '/views/partials/register.html',
+    controller: 'RegisterController'
+  }).
   when('/login', {
     templateUrl: '/views/partials/login.html',
     controller: 'LoginController'

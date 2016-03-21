@@ -7,3 +7,11 @@ img {
 .btn-right {
   float: right;
 }
+
+#login{
+  padding-top: 70px;
+}
+#title{
+  padding-top: 60px;
+  text-align: center;
+}

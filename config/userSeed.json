@@ -1,45 +1,45 @@
 [{
-  "name": "Zorro",
+  "username": "Zorro",
   "password": "abc123",
   "bank": 100,
   "items":[]
 }, {
-  "name": "Superman",
+  "username": "Superman",
   "password": "abc123",
   "bank": 2000,
   "items":[]
 }, {
-  "name": "Batman",
+  "username": "Batman",
   "password": "abc123",
   "bank": 4500,
   "items":[]
 }, {
-  "name": "The Joker",
+  "username": "The Joker",
   "password": "abc123",
   "bank": 20,
   "items":[]
 }, {
-  "name": "Micky",
+  "username": "Micky",
   "password": "Jennifer_Jerome",
   "bank": 600,
   "items":[]
 }, {
-  "name": "Bruce",
+  "username": "Bruce",
   "password": "bruce",
   "bank": 90,
   "items":[]
 }, {
-  "name": "Shaggy Rogers",
+  "username": "Shaggy Rogers",
   "password": "Shaggy",
   "bank": 5,
   "items":[]
 }, {
-  "name": "Fred Rubble",
+  "username": "Fred Rubble",
   "password": "Rubble",
   "bank": 230,
   "items":[]
 }, {
-  "name": "Space Ghost",
+  "username": "Space Ghost",
   "password": "Xhou_Ta",
   "bank": 10000,
   "items":[]

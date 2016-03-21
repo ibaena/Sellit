@@ -8,65 +8,55 @@ var Items = require('../models/items');
 
 // Now, the interesting part:
 data = [{
-  "amount": 25,
-  "name": "Harry Potter",
-  "type": "Book",
-  "description": "Best Book Series ever!",
-  "rating": "4.8/5",
-  "available": true
+  "username": "Zorro",
+  "password": "abc123",
+  "bank": 100,
+  "items":[]
 }, {
-  "amount": 100,
-  "name": "Hulk hogan",
-  "type": "Wrestler",
-  "description": "Best Wrestler ever!",
-  "rating": "4/5",
-  "available": true
+  "username": "Superman",
+  "password": "abc123",
+  "bank": 2000,
+  "items":[]
 }, {
-  "amount": 78,
-  "name": "Vacumm",
-  "type": "appliance",
-  "description": "Best Vacumm ever!",
-  "rating": "4.4/5",
-  "available": true
+  "username": "Batman",
+  "password": "abc123",
+  "bank": 4500,
+  "items":[]
 }, {
-  "amount": 10,
-  "name": "Gatorade",
-  "type": "Drink",
-  "description": "Best Sports Drink ever!",
-  "rating": "4.7/5",
-  "available": true
+  "username": "The Joker",
+  "password": "abc123",
+  "bank": 20,
+  "items":[]
 }, {
-  "amount": 600,
-  "name": "Computer",
-  "type": "Computer",
-  "description": "Best Computer ever!",
-  "rating": "4.2/5",
-  "available": true
-},{
-  "amount": 1000,
-  "name": "Golf Kart",
-  "type": "Auto",
-  "description": "Best Golf cart ever!",
-  "rating": "4.8/5",
-  "available": true
+  "username": "Micky",
+  "password": "Jennifer_Jerome",
+  "bank": 600,
+  "items":[]
 }, {
-  "amount": 5,
-  "name": "Glasses",
-  "type": "accessories",
-  "description": "Best Glasses ever!",
-  "rating": "3.5/5",
-  "available": true
-},{
-  "amount": 12,
-  "name": "Jeans",
-  "type": "clothes",
-  "description": "Best Jeans ever!",
-  "rating": "4.8/5",
-  "available": true
+  "username": "Bruce",
+  "password": "bruce",
+  "bank": 90,
+  "items":[]
+}, {
+  "username": "Shaggy Rogers",
+  "password": "Shaggy",
+  "bank": 5,
+  "items":[]
+}, {
+  "username": "Fred Rubble",
+  "password": "Rubble",
+  "bank": 230,
+  "items":[]
+}, {
+  "username": "Space Ghost",
+  "password": "Xhou_Ta",
+  "bank": 10000,
+  "items":[]
 }]
+
 
 ;
 
-Items.collection.insert(data, function(err, r) {
+User.collection.insert(data, function(err, r) {
   console.log('Successfully loaded Seed Data!');
 });

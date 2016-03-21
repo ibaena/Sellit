@@ -49,8 +49,8 @@ app.get('/api/users', function(req, res) {
   });
 });
 
-//LOGIN
-app.post('/login', function(req, res) {
+//REGISTER
+app.post('/register', function(req, res) {
   console.log(req.body);
   var newUser = User({
     username: req.body.username,
@@ -70,6 +70,25 @@ app.post('/login', function(req, res) {
   });
 });
 
+app.post('/login', function(req, res) {
+  User.findOne({
+    'username': req.body.username
+  }, function(err, user) {
+    if (err) {
+      return (err);
+    }
+    if (!user) {
+        console.log('Username does not exists');
+      return (null, false);
+    }
+    if (user.password != req.body.password) {
+      console.log('Wrong Password');
+      return (null, false);
+    }
+    console.log('yes you are logged in %s,' , user);
+    return (null, user);
+  });
+});
 
 //frontend routes =========================================================
 // route to handle all angular requests
