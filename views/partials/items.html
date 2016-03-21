@@ -1,10 +1,20 @@
 <div class="row">
+  <form>
+    <div class="form-group">
+      <label for="search">Search</label>
+      <input type="text" class="form-control" id="search" placeholder="Search" ng-model="query" >
+    </div>
+  </form>
+</div>
+
+<div class="row">
   <div class="col-md-8 col-md-offset-2">
-    <ul>
-      <li ng-repeat = "item in items">
+    <ul ng-show="query">
+      <li ng-repeat="item in items | filter: query">
         <div class="info">
           <h3>{{item.name}}</h3>
           <p>{{item.description}}</p>
+          <p>{{item.amount | currency: USD}}</p>
         </div>
       </li>
     </ul>

@@ -32,9 +32,6 @@ app.listen(PORT, function() {
 app.get('/api/items', function(req, res) {
   // use mongoose to get all items in the database
   Items.find(function(err, items) {
-    console.log(items);
-    // if there is an error retrieving, send the error.
-    // nothing after res.send(err) will execute
     if (err)
       res.send(err);
 
@@ -45,9 +42,6 @@ app.get('/api/items', function(req, res) {
 app.get('/api/users', function(req, res) {
   // use mongoose to get all users in the database
   User.find(function(err, users) {
-    console.log(users);
-    // if there is an error retrieving, send the error.
-    // nothing after res.send(err) will execute
     if (err)
       res.send(err);
 
