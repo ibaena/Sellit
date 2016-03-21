@@ -1,0 +1,13 @@
+<div class="panel panel-default">
+  <div class="panel-body" ng-model="items">
+    <img src="http://placehold.it/350x150">
+    <h3>{{items[whichItem].name}}</h3>
+    <p>{{items[whichItem].amount | currency: USD}}</p>
+    <p>{{items[whichItem].description}}</p>
+    <p>{{items[whichItem].rating}}
+      stars</p>
+    <p>{{item.description}}</p>
+    <button ng-show="item.available" class="btn btn-default">Buy It Now</button>
+  </div>
+</div>
+<a href="/#/">&laquo; Back to Search</a>

@@ -3,13 +3,17 @@ var SellIt = angular.module('SellIt', [
   'sellItControllers'
 ]);
 
-SellIt.config(['$routeProvider', function($routeProvider){
+SellIt.config(['$routeProvider', function($routeProvider) {
   $routeProvider.
-  when('/',{
+  when('/', {
     templateUrl: '/views/partials/items.html',
     controller: 'ListController'
   }).
+  when('/details/:itemId', {
+    templateUrl: '/views/partials/details.html',
+    controller: 'DetailsController'
+  }).
   otherwise({
-    redirectTo: '/list'
+    redirectTo: '/'
   });
 }]);

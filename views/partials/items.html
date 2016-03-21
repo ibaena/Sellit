@@ -21,19 +21,21 @@
 </div>
 
 <div class="row" ng-show="query">
-  <div class="col-md-4" ng-repeat="item in items | filter: query | orderBy: direction" >
+  <div class="col-md-4" ng-repeat="item in items | filter: query | orderBy: direction">
     <div class="info">
-    <div class="panel panel-default">
-      <div class="panel-body">
-        <img src="http://placehold.it/350x150">
-        <h3>{{item.name}}</h3>
-        <p>{{item.amount | currency: USD}}</p>
-        <p>{{item.rating}}
-          stars</p>
-        <p>{{item.description}}</p>
-        <button ng-show="item.available" class="btn btn-default">Buy It Now</button>
-      </div>
+      <a href="#/details/{{items.indexOf(item)}}">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <img src="http://placehold.it/350x150">
+            <h3>{{item.name}}</h3>
+            <p>{{item.amount | currency: USD}}</p>
+            <p>{{item.rating}}
+              stars</p>
+            <p>{{item.description}}</p>
+            <button ng-show="item.available" class="btn btn-default">Buy It Now</button>
+          </div>
+        </div>
+      </a>
     </div>
   </div>
-      </div>
 </div>
