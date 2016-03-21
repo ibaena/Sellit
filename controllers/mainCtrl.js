@@ -22,6 +22,13 @@ sellItControllers.controller('DetailsController', ['$scope', '$http', '$routePar
     } else {
       $scope.nextItem = 0;
     }
+  });
+}]);
 
+sellItControllers.controller('LoginController', ['$scope', '$http', function($scope, $http) {
+  $http.get('/login').success(function(data) {
+    $scope.login = function(username, password) {
+      console.log(username);
+    };
   });
 }]);
