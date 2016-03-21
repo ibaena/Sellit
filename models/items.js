@@ -25,7 +25,8 @@ var itemSchema = new Schema({
   rating: {
     type: String,
     required: true
-  }
+  },
+  available: Boolean
 });
 
 var Items = mongoose.model('Items', itemSchema);

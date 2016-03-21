@@ -9,6 +9,7 @@ var userSchema = new Schema({
     },
     bank : {
       type : Number,
+      currency: 'USD'
     },
     createdDate : {
       type : Date,

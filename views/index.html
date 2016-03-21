@@ -13,17 +13,20 @@
 
     <div class="container">
       <div class="main" ng-view>
-        
+        <form ng-model="user" ng-submit="addUser()" ng-controller="AddController">
+          <div class="form-group">
+            <label for="name">Username</label>
+            <input class="form-control" type="text" ng-model="user.name" name="username"/>
+          </div>
+          <div class="form-group">
+            <label for="pasword">Password</label>
+            <input class="form-control" type="text" ng-model="user.password" name="password"/>
+          </div>
+          <button class="btn btn-default" type="submit" id="submit" value="Submit">Submit</button>
+        </form>
 
-    </div>
-
-
-
-
-
-
-
-  </body>
-  <script src="bower_components/jquery/jquery.min.js"></script>
-  <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-</html>
+      </div>
+    </body>
+    <script src="bower_components/jquery/jquery.min.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  </html>
