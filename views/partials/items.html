@@ -1,13 +1,14 @@
 <div class="row">
-  <form>
-    <div class="form-group">
-      <label for="search">Search</label>
-      <input type="text" class="form-control" id="search" placeholder="Search" ng-model="query">
-    </div>
+  <div class="col-md-8 col-md-offset-2">
+    <form>
+      <div class="form-group">
+        <label for="search">Search</label>
+        <input type="text" class="form-control" id="search" placeholder="Search" ng-model="query">
+      </div>
 
       <div class="radio">
         <label>
-          <input type="radio" ng-model="direction" name="direction"  value="amount"checked>
+          <input type="radio" ng-model="direction" name="direction" value="amount" checked>
           Lowest -> Highest
         </label>
         <label>
@@ -15,20 +16,24 @@
           Highest -> Lowest
         </label>
       </div>
-  </form>
+    </form>
+  </div>
 </div>
 
-<div class="row">
-  <div class="col-md-8 col-md-offset-2">
-    <ul ng-show="query">
-      <li ng-repeat="item in items | filter: query | orderBy: direction">
-        <div class="info">
-          <h3>{{item.name}}</h3>
-          <p>{{item.description}}</p>
-          <p>{{item.amount | currency: USD}}</p>
-        </div>
-        <button ng-show="item.available"class="btn btn-default">Buy It Now</button>
-      </li>
-    </ul>
+<div class="row" ng-show="query">
+  <div class="col-md-4" ng-repeat="item in items | filter: query | orderBy: direction" >
+    <div class="info">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <img src="http://placehold.it/350x150">
+        <h3>{{item.name}}</h3>
+        <p>{{item.amount | currency: USD}}</p>
+        <p>{{item.rating}}
+          stars</p>
+        <p>{{item.description}}</p>
+        <button ng-show="item.available" class="btn btn-default">Buy It Now</button>
+      </div>
+    </div>
   </div>
+      </div>
 </div>
