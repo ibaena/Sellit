@@ -21,12 +21,42 @@ app.use('/controllers', express.static(__dirname + "/controllers"));
 app.use(express.static(__dirname + "/views"));
 app.use("/views", express.static(__dirname + "/views"));
 
+app.use(bodyParser.json());
+
 
 app.listen(PORT, function() {
   console.log('Hey there cowboy your up and running on %s', PORT);
 });
 
+//API ROUTES
+app.get('/api/items', function(req, res) {
+  // use mongoose to get all items in the database
+  Items.find(function(err, items) {
+    console.log(items);
+    // if there is an error retrieving, send the error.
+    // nothing after res.send(err) will execute
+    if (err)
+      res.send(err);
 
-app.get('/', function(req, res) {
-  res.send('/views/index.html');
+    res.json(items); // return all items in JSON format
+  });
+});
+
+app.get('/api/users', function(req, res) {
+  // use mongoose to get all users in the database
+  User.find(function(err, users) {
+    console.log(users);
+    // if there is an error retrieving, send the error.
+    // nothing after res.send(err) will execute
+    if (err)
+      res.send(err);
+
+    res.json(users); // return all items in JSON format
+  });
+});
+
+//frontend routes =========================================================
+// route to handle all angular requests
+app.get('*', function(req, res) {
+  res.send('./views/index.html'); // load our public/index.html file
 });
