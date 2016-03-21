@@ -1,13 +1,19 @@
-<div class="panel panel-default">
-  <div class="panel-body" ng-model="items">
-    <img src="http://placehold.it/350x150">
-    <h3>{{items[whichItem].name}}</h3>
-    <p>{{items[whichItem].amount | currency: USD}}</p>
-    <p>{{items[whichItem].description}}</p>
-    <p>{{items[whichItem].rating}}
-      stars</p>
-    <p>{{item.description}}</p>
-    <button ng-show="item.available" class="btn btn-default">Buy It Now</button>
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <a href="#/details/{{prevItem}}" class="btn btn-left">&lt;</a>
+    <a href="#/details/{{nextItem}}" class="btn btn-right">&gt;</a>
+    <div class="panel panel-default">
+      <div class="panel-body" ng-model="items">
+        <img src="http://placehold.it/350x150">
+        <h3>{{items[whichItem].name}}</h3>
+        <p>{{items[whichItem].amount | currency: USD}}</p>
+        <p>{{items[whichItem].description}}</p>
+        <p>{{items[whichItem].rating}}
+          stars</p>
+        <p>{{item.description}}</p>
+        <button ng-show="items[whichItem].available" class="btn btn-default">Buy It Now</button>
+      </div>
+    </div>
+    <a href="/#/">&laquo; Back to Search</a>
   </div>
 </div>
-<a href="/#/">&laquo; Back to Search</a>

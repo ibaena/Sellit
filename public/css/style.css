@@ -1,3 +1,9 @@
-img{
+img {
   width: 100%;
+}
+.btn-left {
+  float: left;
+}
+.btn-right {
+  float: right;
 }

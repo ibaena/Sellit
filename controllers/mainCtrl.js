@@ -1,4 +1,3 @@
-
 var sellItControllers = angular.module('sellItControllers', []);
 
 sellItControllers.controller('ListController', ['$scope', '$http', function($scope, $http) {
@@ -11,6 +10,18 @@ sellItControllers.controller('DetailsController', ['$scope', '$http', '$routePar
   $http.get('/api/items').success(function(data) {
     $scope.items = data;
     $scope.whichItem = $routeParams.itemId;
+
+    if ($routeParams.itemId > 0) {
+      $scope.prevItem = Number($routeParams.itemId) - 1;
+    } else {
+      $scope.prevItem = $scope.items.length - 1;
+    }
+
+    if ($routeParams.itemId < $scope.items.length - 1) {
+      $scope.nextItem = Number($routeParams.itemId) + 1;
+    } else {
+      $scope.nextItem = 0;
+    }
 
   });
 }]);
