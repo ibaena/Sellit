@@ -33,13 +33,13 @@ sellItControllers.controller('RegisterController', ['$scope', '$http', '$locatio
       data: $scope.user
     }).success(function(data) {
       $scope.users = data;
-      console.log('You added a user! %s', $scope.users.username);
       $scope.user = {};
       $location.path('/login');
     });
   };
 }]);
 
+//**********USER AUTHENTICATED CONTROLLER*********
 sellItControllers.controller('LoginController', ['$scope', '$http', '$routeParams', function($scope, $http, $routeParams) {
   $http.get('/api/items').success(function(data) {
     $scope.items = data;
@@ -54,6 +54,16 @@ sellItControllers.controller('LoginController', ['$scope', '$http', '$routeParam
       $scope.loggedIn = true;
       $scope.users = data;
       $scope.user = {};
+      $scope.addFunds = function() {
+        $scope.users.bank = $scope.users.bank + 10;
+        $http({
+          method: 'POST',
+          url: '/updatebank/'+ $scope.users._id,
+          data: {bank:$scope.users.bank}
+        }).success(function(data) {
+          console.log(data);
+        });
+      };
     });
   };
 

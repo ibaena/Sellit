@@ -73,8 +73,27 @@ app.post('/login', passport.authenticate('local-login'), function(req, res) {
   res.send(req.user);
 });
 
+//UPDATE BANK
+app.post('/updatebank/:id', function(req, res) {
+  User.findOneAndUpdate({
+    _id: req.params.id
+  }, {
+    bank: req.body.bank
+  }, {
+    new: true
+  }, function(err, doc) {
+    if (err) {
+      console.log(err);
+      res.send(err);
+    } else {
+      console.log(doc);
+      res.send(doc);
+    }
+  });
+});
+
 //frontend routes =========================================================
 // route to handle all angular requests
 app.get('*', function(req, res) {
-  res.send('./views/index.html'); // load our public/index.html file
+  res.send('./views/index.html'); // load public/index.html file
 });
