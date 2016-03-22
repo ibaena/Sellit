@@ -48,22 +48,18 @@ app.listen(PORT, function() {
 
 //API ROUTES
 app.get('/api/items', function(req, res) {
-  // use mongoose to get all items in the database
   Items.find(function(err, items) {
     if (err)
       res.send(err);
-
-    res.json(items); // return all items in JSON format
+    res.json(items);
   });
 });
 
 app.get('/api/users', function(req, res) {
-  // use mongoose to get all users in the database
   User.find(function(err, users) {
     if (err)
       res.send(err);
-
-    res.json(users); // return all items in JSON format
+    res.json(users);
   });
 });
 

@@ -35,12 +35,12 @@ sellItControllers.controller('RegisterController', ['$scope', '$http', '$locatio
       $scope.users = data;
       console.log('You added a user! %s', $scope.users.username);
       $scope.user = {};
-      $location.path('/location');
+      $location.path('/login');
     });
   };
 }]);
 
-sellItControllers.controller('LoginController', ['$scope', '$http', '$location', function($scope, $http, $location) {
+sellItControllers.controller('LoginController', ['$scope', '$http', '$routeParams', function($scope, $http, $routeParams) {
   $scope.user = {};
   $scope.login = function() {
     $scope.loggedIn = true;
