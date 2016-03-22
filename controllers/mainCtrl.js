@@ -24,30 +24,34 @@ sellItControllers.controller('DetailsController', ['$scope', '$http', '$routePar
   });
 }]);
 
-sellItControllers.controller('RegisterController', ['$scope', '$http', function($scope, $http) {
+sellItControllers.controller('RegisterController', ['$scope', '$http','$location', function($scope, $http, $location) {
   $scope.user = {};
   $scope.register = function() {
     $http({
       method: 'POST',
       url: '/register',
       data: $scope.user
-    }).then(function(result) {
-      console.log('Hey i think ou added a user! %s', result.data.username);
+    }).success(function(data) {
+      $scope.users = data;
+      console.log('You added a user! %s', $scope.users.username);
       $scope.user = {};
+      $location.path('/location');
     });
   };
 }]);
 
-sellItControllers.controller('LoginController', ['$scope', '$http', function($scope, $http) {
+sellItControllers.controller('LoginController', ['$scope', '$http','$location', function($scope, $http, $location) {
   $scope.user = {};
   $scope.login = function() {
+      $scope.loggedIn = true;
     $http({
       method: 'POST',
       url: '/login',
       data: $scope.user
-    }).then(function(result) {
-      console.log('Hey Your logged in %s', result.data.username);
+    }).success(function(data) {
+      $scope.users = data;
       $scope.user = {};
+      $location.path('/');
     });
   };
 }]);

@@ -55,11 +55,13 @@ app.post('/register', function(req, res) {
   var newUser = User({
     username: req.body.username,
     password: req.body.password,
+    bank: req.body.bank
   });
 
   newUser.save({
     username: req.body.username,
-    password: req.body.password
+    password: req.body.password,
+    bank: req.body.bank
   }, function(err, saved) {
     if (err) {
       console.log(err);
@@ -70,6 +72,7 @@ app.post('/register', function(req, res) {
   });
 });
 
+//LOGIN
 app.post('/login', function(req, res) {
   User.findOne({
     'username': req.body.username
@@ -86,7 +89,7 @@ app.post('/login', function(req, res) {
       return (null, false);
     }
     console.log('yes you are logged in %s,' , user);
-    return (null, user);
+    res.send(user);
   });
 });
 
