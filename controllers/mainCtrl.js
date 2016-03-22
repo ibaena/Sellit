@@ -24,7 +24,7 @@ sellItControllers.controller('DetailsController', ['$scope', '$http', '$routePar
   });
 }]);
 
-sellItControllers.controller('RegisterController', ['$scope', '$http','$location', function($scope, $http, $location) {
+sellItControllers.controller('RegisterController', ['$scope', '$http', '$location', function($scope, $http, $location) {
   $scope.user = {};
   $scope.register = function() {
     $http({
@@ -40,10 +40,10 @@ sellItControllers.controller('RegisterController', ['$scope', '$http','$location
   };
 }]);
 
-sellItControllers.controller('LoginController', ['$scope', '$http','$location', function($scope, $http, $location) {
+sellItControllers.controller('LoginController', ['$scope', '$http', '$location', function($scope, $http, $location) {
   $scope.user = {};
   $scope.login = function() {
-      $scope.loggedIn = true;
+    $scope.loggedIn = true;
     $http({
       method: 'POST',
       url: '/login',
@@ -51,7 +51,7 @@ sellItControllers.controller('LoginController', ['$scope', '$http','$location', 
     }).success(function(data) {
       $scope.users = data;
       $scope.user = {};
-      $location.path('/');
+
     });
   };
 }]);

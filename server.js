@@ -6,6 +6,9 @@ var PORT = process.env.PORT || 8000;
 var bodyParser = require('body-parser'),
   db = require('./config/mongoose'),
   morgan = require('morgan'),
+  session = require('express-session'),
+  passport = require('passport'),
+  passport = require('./config/passport'),
   User = require('./models/user'),
   Items = require('./models/items');
 
@@ -22,6 +25,21 @@ app.use(express.static(__dirname + "/views"));
 app.use("/views", express.static(__dirname + "/views"));
 
 app.use(bodyParser.json());
+
+//CREATE SECRET FOR USER LOGIN
+app.use(session({
+  secret: 'DarkKnight',
+  cookie: {
+    secure: false,
+    maxAge: 1000 * 60 * 10
+  },
+  saveUninitialized: true,
+  resave: true
+}));
+
+//PASSPORT INITIALIZE
+app.use(passport.initialize());
+app.use(passport.session());
 
 
 app.listen(PORT, function() {
@@ -50,47 +68,13 @@ app.get('/api/users', function(req, res) {
 });
 
 //REGISTER
-app.post('/register', function(req, res) {
-  console.log(req.body);
-  var newUser = User({
-    username: req.body.username,
-    password: req.body.password,
-    bank: req.body.bank
-  });
-
-  newUser.save({
-    username: req.body.username,
-    password: req.body.password,
-    bank: req.body.bank
-  }, function(err, saved) {
-    if (err) {
-      console.log(err);
-    } else {
-      console.log('Added User! %s', saved);
-      res.send(saved);
-    }
-  });
+app.post('/register', passport.authenticate('local-signup'), function(req, res) {
+  res.send(req.user);
 });
 
 //LOGIN
-app.post('/login', function(req, res) {
-  User.findOne({
-    'username': req.body.username
-  }, function(err, user) {
-    if (err) {
-      return (err);
-    }
-    if (!user) {
-        console.log('Username does not exists');
-      return (null, false);
-    }
-    if (user.password != req.body.password) {
-      console.log('Wrong Password');
-      return (null, false);
-    }
-    console.log('yes you are logged in %s,' , user);
-    res.send(user);
-  });
+app.post('/login', passport.authenticate('local-login'), function(req, res) {
+  res.send(req.user);
 });
 
 //frontend routes =========================================================
