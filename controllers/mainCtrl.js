@@ -41,17 +41,20 @@ sellItControllers.controller('RegisterController', ['$scope', '$http', '$locatio
 }]);
 
 sellItControllers.controller('LoginController', ['$scope', '$http', '$routeParams', function($scope, $http, $routeParams) {
+  $http.get('/api/items').success(function(data) {
+    $scope.items = data;
+  });
   $scope.user = {};
   $scope.login = function() {
-    $scope.loggedIn = true;
     $http({
       method: 'POST',
       url: '/login',
       data: $scope.user
     }).success(function(data) {
+      $scope.loggedIn = true;
       $scope.users = data;
       $scope.user = {};
-
     });
   };
+
 }]);

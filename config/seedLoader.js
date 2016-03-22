@@ -1,3 +1,5 @@
+//THIS IS ONLY INTENED TO LOAD SEED DATA RUN BY ITSELF
+
 var mongoose = require('mongoose');
 var assert = require('assert');
 

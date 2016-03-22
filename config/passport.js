@@ -49,11 +49,11 @@ passport.use('local-login', new Strategy({
       'username': req.body.username
     }, function(err, user) {
       bcrypt.compare(req.body.password, user.password, function(err, res) {
-        console.log(res);
         if (err) {
           return done(err);
         }
         if (!res) {
+
           return done(null, false);
         }
         if (res) {

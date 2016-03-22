@@ -14,8 +14,8 @@
         <input type="text" class="form-control" id="username" placeholder="Username" ng-model="user.username">
       </div>
       <div class="form-group">
-        <label for="password">Search</label>
-        <input type="text" class="form-control" id="password" placeholder="Password" ng-model="user.password">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" id="password" placeholder="Password" ng-model="user.password">
       </div>
       <div class="form-group">
         <button class="btn btn-default" type="submit">Login</button>
@@ -24,8 +24,20 @@
     </form>
   </div>
 </div>
-<div ng-show="loggedIn">
-  <h2>Hi, {{users.username}}!</h2>
-  <p>Bank: {{users.bank | currency: USD}}</p>
-  <p>Items: {{users.items}}</p>
+
+<div class="row">
+  <div class="col-md-4 col-md-offset-8">
+    <div class="panel panel-default" ng-show="loggedIn">
+      <div class="panel-body">
+        <h2>{{users.username}}!</h2>
+        <p>Bank:
+          {{users.bank | currency: USD}}</p>
+        <p>Items:
+          {{users.items}}</p>
+        <button class="btn btn-default" type="submit">List Item</button>
+        <button class="btn btn-default" type="submit">Add Funds</button>
+      </div>
+    </div>
+  </div>
 </div>
+<div ng-include="" src="'../views/partials/items.html'" ng-show="loggedIn"></div>
