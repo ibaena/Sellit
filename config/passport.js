@@ -48,18 +48,17 @@ passport.use('local-login', new Strategy({
     User.findOne({
       'username': req.body.username
     }, function(err, user) {
-      bcrypt.compare(password, user.password, function(err, res) {
+      bcrypt.compare(req.body.password, user.password, function(err, res) {
         console.log(res);
         if (err) {
           return done(err);
         }
-        if (!user) {
+        if (!res) {
           return done(null, false);
         }
-        if (!user.password) {
-          return done(null, false);
+        if (res) {
+          return done(null, user);
         }
-        return done(null, user);
       });
     });
   }));
